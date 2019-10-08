@@ -9,16 +9,20 @@ namespace TestTask
     {
         private readonly bool _nullValueIsSmallest;
         private readonly string _sortString;
-        //private readonly List<Condition> _conditions;
+
+        //do i need that?
+        private readonly List<Condition> _conditions;
 
         public UniversalComparer(string sortString, bool nullValueIsSmallest = false)
         {
             _nullValueIsSmallest = nullValueIsSmallest;
             _sortString = sortString;
+            _conditions = GetConditions();
         }
 
         public List<string> SplitSortStringOnProperties(string sortString)
         {
+            //do i need this if there is only one separator?
             var delimiters = new[] { ", " };
             return sortString.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).ToList();
         }
@@ -27,7 +31,10 @@ namespace TestTask
         {
             var condition = new Condition
             {
-                Property = property.Split(' ')[0].Split('.').ToList(), 
+                Field = new Field
+                {
+                    Property = property.Split(' ')[0].Split('.').ToList(),
+                },
 
                 //how to check whether the sort string has asc/desc
                 Desc = property.Split(' ').Contains("desc") 
@@ -35,9 +42,17 @@ namespace TestTask
             return condition;
         }
 
+        public List<Condition> GetConditions()
+        {
+            var properties = SplitSortStringOnProperties(_sortString);
+            return properties.Select(property => SplitOnConditions(property)).ToList();
+        }
 
+        public object GetValue(List<Condition> conditions)
+        {
 
-
+            return new object();
+        }
         /*public static List<Condition> SplitSor(string sortString)
         {
             var delimiters = new[] { ", "};
