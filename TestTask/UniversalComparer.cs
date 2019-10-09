@@ -48,29 +48,40 @@ namespace TestTask
             return properties.Select(property => SplitOnConditions(property)).ToList();
         }
 
-        public object GetValue(List<Condition> conditions)
+        public object GetValue(object obj, Field field)
         {
-
-            return new object();
-        }
-        /*public static List<Condition> SplitSor(string sortString)
-        {
-            var delimiters = new[] { ", "};
-            var condition = new Condition();
-            var tmp = new List<Condition>();
-            var listCondition = sortString.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).ToList();
-            foreach (var c in listCondition)
+            
+            object result = obj;
+            //var value = obj.GetType().GetField(conditions.Field.Property.Select(conditions => GetValue(conditions.))).
+            foreach (var c in field.Property)
             {
-                condition.pr = c.Split(' ')[0];
-                condition.Asc = c.Split(' ')[1] == "desc";
+                var fields = result.GetType().GetFields().ToList();
+                var properties = result.GetType().GetProperties().ToList();
+                if (fields.Count > 0)
+                {
+                    result = fields.SingleOrDefault(p => p.Name == c)?.GetValue(result);
+                }
+
+                if (properties.Count > 0)
+                {
+                    result = properties.SingleOrDefault(p => p.Name == c)?.GetValue(result);
+                }
             }
-            var cond = sortString.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList();
-            var x = cond.Select(x=>x.Value)
-            return new List<Condition>(); sortString.Split(',', StringSplitOptions.RemoveEmptyEntries);
-        }*/
+
+            //
+            //result = GetConditions(result, conditions.)
+            return result;
+        }
 
         public int Compare(object x, object y)
         {
+            foreach (var condition in _conditions)
+            {
+                var firstValue = GetValue(x, condition.Field);
+                var secondValue = GetValue(y, condition.Field);
+
+
+            }
             throw new NotImplementedException();
         }
     }
