@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestTask
+namespace UniversalComparer
 {
     public class Person
     {

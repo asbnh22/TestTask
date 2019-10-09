@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TestTask
+namespace UniversalComparer
 {
     public class Condition
     {

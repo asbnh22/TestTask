@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TestTask
+namespace UniversalComparer
 {
     public class UniversalComparer : IComparer
     {
