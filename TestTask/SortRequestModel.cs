@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace TestTask
 {
@@ -9,7 +7,6 @@ namespace TestTask
         public Field Field { get; set; }
         public bool Desc { get; set; }
     }
-
 
     public class Field
     {
