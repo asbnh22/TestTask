@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace TestTask
+namespace UniversalComparer
 {
     public class Condition
     {
         public Field Field { get; set; }
         public bool Desc { get; set; }
     }
-
 
     public class Field
     {

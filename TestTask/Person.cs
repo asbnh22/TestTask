@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace TestTask
+namespace UniversalComparer
 {
     public class Person
     {
-        public Person Cheif { get; set; }
+        public Person Chief { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime Born { get; set; }
